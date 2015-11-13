@@ -21,10 +21,6 @@ object OptionAndTry extends App {
   val personsWithContact = PersonModel.initPersonsWithContact
   println(PersonModel.findHasContact(personsWithContact))
 
-  // sugar
-  println(personsWithContact.head.contact.flatMap(c => c.telephone).getOrElse(""))
-  println(personsWithContact.head.contact.flatMap(_.telephone).getOrElse(""))
-
 
   // Try -------------------------
   val filename = "/etc/passwd"

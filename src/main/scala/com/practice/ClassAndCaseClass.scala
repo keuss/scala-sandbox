@@ -7,10 +7,12 @@ object ClassAndCaseClass extends App {
   println(s"p1 : $p1")
 
   // case class ------------------
-  // no new !
+  // no new (thank to apply method) !
   // free getter !
   // immutable !
   // pattern matching !
+  // toString equal et hashCode ready !
+  // copy ready !
   val p2 = PersonModel("Mike", 45)
   println(s"p2 : $p2")
   println(s"p2 : ${p2.name}")
@@ -21,19 +23,5 @@ object ClassAndCaseClass extends App {
   val persons: List[PersonModel] = PersonModel.initPersons(4)
   println("Persons : " + persons)
 
-  // methods(Case Class Definition)
-  println(p2.older(1))
-  println(p2 older 1)
-  println(p2 older {
-    1
-  })
-
-  // for comprehension and flatMap
-  val jobs: List[Job] = Job.initJobs
-  println(jobs)
-  println(Job.getPersonsWithJob(jobs))
-
-  // other functionnal stuff
-  println(PersonModel.changeAllName(persons, "Donald"))
 
 }

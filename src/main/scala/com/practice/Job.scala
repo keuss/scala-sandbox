@@ -21,30 +21,7 @@ object Job {
   }
 
   def getPersonsWithJob(jobs: List[Job]): List[PersonModel] = {
-
-    /*
-    val sPerson = ListBuffer[PersonModel]()
-    jobs.foreach( job => job.persons.foreach( p => sPerson += PersonModel(p.name, p.age, job.name)))
-    sPerson.toList
-    */
-
-    /*jobs flatMap { job =>
-      job.persons map { p =>
-        PersonModel(p.name, p.age, job.name)}
-    }*/
-
-    // <=>
-
-    //jobs.flatMap( job => job.persons.map( p => PersonModel(p.name, p.age, job.name)))
-
-    // <=>
-
-
-    for {
-      job <- jobs
-      p <- job.persons
-    } yield PersonModel(p.name, p.age, job.name)
-
+    ???
   }
 
 }

@@ -3,14 +3,14 @@ package com.practice
 import scala.collection.mutable.ListBuffer
 import scala.util.Random
 
-case class PersonModel(name: String, age: Int, job: String = "Unemploy", contact: Option[Contact] = None) {
+case class PersonModel(name: String, age: Int, job: String = "Unemploy") {
 
   /**
    * older method
    * @param years to add
    * @return an older person
    */
-  def older(years: Int): PersonModel = PersonModel(name, age + years)
+  def older(years: Int): PersonModel = ???
 
 }
 
@@ -37,6 +37,7 @@ object PersonModel {
    * @return list of person models with job and contact data
    */
   def initPersonsWithContact: List[PersonModel] = {
+    /*
     val sPerson = ListBuffer[PersonModel]()
     sPerson += PersonModel("Mike", 45, "Engineer", Some(Contact(Some("0615451237"), Some("mike@gmail.com"))))
     sPerson += PersonModel("Lucy", 32, "Engineer", Some(Contact(Some("0614874414"), Some("lucy@gmail.com"))))
@@ -44,6 +45,8 @@ object PersonModel {
     sPerson += PersonModel("Anna", 36, "Doctor", Some(Contact(None, Some("anna@gmail.com"))))
     sPerson += PersonModel("Steve", 52, "Engineer", Some(Contact(Some("0614812185"), None)))
     sPerson.toList
+    */
+    ???
   }
 
   /**
@@ -53,7 +56,7 @@ object PersonModel {
    * @return list of person with updated name
    */
   def changeAllName(persons: List[PersonModel], newName: String): List[PersonModel] = {
-    persons.map( p => PersonModel(newName, p.age))
+    ???
   }
 
   /**
@@ -63,7 +66,7 @@ object PersonModel {
    * @return person if finded
    */
   def findByName(persons: List[PersonModel], name: String): Option[PersonModel] = {
-    persons.find( p => p.name == name)
+    ???
   }
 
   /**
@@ -72,7 +75,7 @@ object PersonModel {
    * @return list of person
    */
   def findHasContact(persons: List[PersonModel]): List[PersonModel] = {
-    persons.filter( p => p.contact.isDefined)
+    ???
   }
 
 

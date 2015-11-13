@@ -1,5 +1,8 @@
 package com.practice
 
+import scala.util.Try
+import scala.io.Source
+
 
 object Utils {
 
@@ -15,6 +18,12 @@ object Utils {
       sb.append(chars(randomNum))
     }
     sb.toString
+  }
+
+  def readTextFile(filename: String): Try[List[String]] = {
+    Try {
+      Source.fromFile(filename).getLines.toList
+    }
   }
 
 }

@@ -1,8 +1,12 @@
 package com.practice
 
+import scala.util.Failure
+import scala.util.Success
+
+
 object OptionAndTry extends App {
 
-  // Option
+  // Option ----------------------
   val persons: List[PersonModel] = PersonModel.initPersons(4)
   val mayBePerson: Option[PersonModel] = PersonModel.findByName(persons, persons.head.name);
   println(mayBePerson)
@@ -14,5 +18,19 @@ object OptionAndTry extends App {
   }
   println(personName)
 
+  val personsWithContact = PersonModel.initPersonsWithContact
+  println(PersonModel.findHasContact(personsWithContact))
+
+  // sugar
+  println(personsWithContact.head.contact.flatMap(c => c.telephone).getOrElse(""))
+  println(personsWithContact.head.contact.flatMap(_.telephone).getOrElse(""))
+
+
+  // Try -------------------------
+  val filename = "/etc/passwd"
+  Utils.readTextFile(filename) match {
+    case Success(lines) => lines.foreach(println)
+    case Failure(f) => println(f)
+  }
 
 }

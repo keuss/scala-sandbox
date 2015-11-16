@@ -46,6 +46,13 @@ object Collections {
       (unit +: circlesRec(n -1))
   }
 
+  /**
+   * Returns `n` concentric circles (for implementation)
+   */
+  def circles(n: Int): List[Circle] = {
+    ???
+  }
+
 
   /**
    *  Return a stack on Image

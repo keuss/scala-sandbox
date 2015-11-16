@@ -13,6 +13,10 @@ SBT Scala project
 - Try to define variable with his type (string) and concat to "hello world"
 - Draw a barbell
 
+# Collections introduction (LoopsAndConditionals)
+- Try to implement circles method in Collections.scala with ListBuffer (for classic)
+- Introduction Collections.inc and Collections.lengths VS Collections.incMap and Collections.lengthsMap
+
 # Case Class Definition (Main.scala)
 - Implement def unitCircle and draw a Circle
 - Present Barbell model (weigh and lighten) and barbellImage method id in Main.scala

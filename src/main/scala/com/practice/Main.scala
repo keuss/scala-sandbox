@@ -41,4 +41,16 @@ object Main extends App {
   draw(barbellImage(lighterBarbell))
 
   // TODO
+
+
+  // Polymorphism
+  val seqString: Seq[String] = Seq("1", "2", "3")
+  val seqString2: Seq[String] = Seq("4", "5", "6")
+  val seqInt: Seq[Int] = Seq(1, 2, 3, 4)
+  println(Polymorphism.size(seqString))
+  println(Polymorphism.size(seqInt))
+
+  // TODO
+  //println(Polymorphism.concat(seqString, seqString2))
+  //println(Polymorphism.reverse(seqInt))
 }

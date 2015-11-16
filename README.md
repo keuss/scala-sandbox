@@ -45,3 +45,12 @@ SBT Scala project
 # Try (OptionAndTry and Handling Failure)
 - Introduction to try
 - Try to create a "parseURL" method with new URL(url) and test it with Pattern matching !
+
+# Polymorphic Methods
+- Introduction with def size in Polymorphism.scala
+- Try to implement concat and reverse method in Polymorphism.scala and test if in Main.scala
+
+# Type Classes and Implicit Parameters 
+- Show in Typeclasses.scala with implicit parameter ...
+
+# Questions ?

@@ -12,19 +12,16 @@ object Polymorphism {
 
   /**
    * Implement the following method that concatenates two sequences
-   ici as1 eest devant as2
    */
-  def concat[A](as1: Seq[A], as2: Seq[A]): Seq[A] = as1 match {
-    case Nil => as2
-    case a1 +: as1Trail => a1 +: concat(as1Trail, as2)
+  def concat[A](as1: Seq[A], as2: Seq[A]): Seq[A] = {
+    ???
   }
 
   /**
    * Implement the following method that reverses a sequence
    */
-  def reverse[A](as: Seq[A]): Seq[A] = as match {
-    case Nil => Nil
-    case a +: asTrail => reverse(asTrail) :+ a
+  def reverse[A](as: Seq[A]): Seq[A] = {
+    ???
   }
 
 }

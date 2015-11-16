@@ -3,6 +3,8 @@ package com.practice
 
 import doodle.core._
 
+import scala.collection.mutable.ListBuffer
+
 object Collections {
 
   /**
@@ -44,6 +46,17 @@ object Collections {
       Seq(unit)
     else
       (unit +: circlesRec(n -1))
+  }
+
+  /**
+   * Returns `n` concentric circles (for implementation)
+   */
+  def circles(n: Int): List[Circle] = {
+    val circles = ListBuffer[Circle]()
+    for(i <- 1 to n) {
+      circles += Circle(20 + 4 * i)
+    }
+    circles.toList
   }
 
 

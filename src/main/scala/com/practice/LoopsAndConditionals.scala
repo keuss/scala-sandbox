@@ -7,6 +7,7 @@ import doodle.jvm._
 object LoopsAndConditionals extends App {
 
   //Collections
-  //println(Collections.circlesRec(4))
+  println(Collections.circlesRec(4))
   //draw(Collections.stack(Collections.circlesRec(4)))
+  //draw(Collections.stack(Collections.circles(4)))
 }

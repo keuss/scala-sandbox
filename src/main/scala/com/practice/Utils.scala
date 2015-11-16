@@ -1,7 +1,7 @@
 package com.practice
 
-import scala.util.Try
 import scala.io.Source
+import scala.util.{Failure, Success, Try}
 
 
 object Utils {
@@ -24,6 +24,11 @@ object Utils {
     Try {
       Source.fromFile(filename).getLines.toList
     }
+  }
+
+  def optionToTry[T](option: Option[T]): Try[T] = option match {
+    case Some(value) => Success(value)
+    case None => Failure(new Exception("Unable to get value for the given option !"))
   }
 
 }

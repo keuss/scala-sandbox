@@ -42,4 +42,4 @@ SBT Scala project
 
 # Try (OptionAndTry and Handling Failure)
 - Introduction to try
-- ...
+- Try to create a "parseURL" method with new URL(url) and test it with Pattern matching !

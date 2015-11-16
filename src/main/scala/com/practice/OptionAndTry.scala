@@ -29,4 +29,8 @@ object OptionAndTry extends App {
     case Failure(f) => println(f)
   }
 
+  // URL error handling
+  // TODO
+  // println(parseURL("http://danielwestheide.com").map(_.getProtocol))
+
 }

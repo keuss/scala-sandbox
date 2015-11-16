@@ -12,7 +12,7 @@ object Polymorphism {
 
   /**
    * Implement the following method that concatenates two sequences
-   ici as1 eest devant as2
+   ici as1 est devant as2
    */
   def concat[A](as1: Seq[A], as2: Seq[A]): Seq[A] = as1 match {
     case Nil => as2

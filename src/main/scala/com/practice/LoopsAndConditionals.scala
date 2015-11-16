@@ -16,4 +16,5 @@ object LoopsAndConditionals extends App {
   //println(Collections.circlesRec(4))
   //draw(Collections.stack(Collections.circlesRec(4)))
   //draw(Collections.stack(Collections.circles(4)))
+  //draw(Collections.stackBis(Collections.circles(4)))
 }

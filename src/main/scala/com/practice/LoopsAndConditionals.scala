@@ -7,7 +7,13 @@ import doodle.jvm._
 object LoopsAndConditionals extends App {
 
   //Collections
-  println(Collections.circlesRec(4))
+  val numbers = Seq(1,2,3)
+  println(Collections.inc(numbers))
+  println(Collections.lengths(Seq("1", "22", "333")))
+  println(Collections.incMap(numbers))
+  println(Collections.lengthsMap(Seq("1", "22", "333")))
+
+  //println(Collections.circlesRec(4))
   //draw(Collections.stack(Collections.circlesRec(4)))
   //draw(Collections.stack(Collections.circles(4)))
 }

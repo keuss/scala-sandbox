@@ -63,6 +63,13 @@ object Collections {
     case img +: imgsTrail => img on stack(imgsTrail)
   }
 
+  /**
+   *  Return a stack on Image foldLeft
+   */
+  def stackBis(images: Seq[Image]): Image = {
+    ???
+  }
+
   def spiral(n: Int): Seq[Image] = ???
 
   def spiralRec(n: Int): Seq[Image] = {

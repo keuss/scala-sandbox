@@ -31,6 +31,8 @@ SBT Scala project
 - Present Job model
 - Implement getPersonsWithJob (3 style : foreach, flatMap, for) to fill job attribut in a given person list
 - Present differences map vs flatMap ...
+- Present foldLeft (see test fold in Main.scala) functional stuff ... 
+- Try to implement stackBis in Collections.scala and test if from LoopsAndConditionals.scala
 
 # Option (OptionAndTry)
 - Implement findByName method in PersonModel object

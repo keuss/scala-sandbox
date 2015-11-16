@@ -18,5 +18,8 @@ object LoopsAndConditionals extends App {
   //println(Collections.circlesRec(4))
   //draw(Collections.stack(Collections.circlesRec(4)))
 
+  //TODO implement stackBis
+  //draw(Collections.stackBis(Collections.circles(4)))
+
 
 }

@@ -74,6 +74,7 @@ object Collections {
    */
   def stackBis(images: Seq[Image]): Image = {
     images.foldLeft(Circle(0).fillColor(Color.white)) (
+      // <=> (_ on _)
       (acc, num) => acc on num
     )
   }

@@ -35,10 +35,6 @@ object FuturesAndPromises extends App {
   type Espresso = String
   type Cappuccino = String
   // dummy implementations of the individual steps:
-  /*def grind(beans: CoffeeBeans): GroundCoffee = s"ground coffee of $beans"
-  def heatWater(water: Water): Water = water.copy(temperature = 85)
-  def frothMilk(milk: Milk): FrothedMilk = s"frothed $milk"
-  def brew(coffee: GroundCoffee, heatedWater: Water): Espresso = "espresso"*/
   def combine(espresso: Espresso, frothedMilk: FrothedMilk): Cappuccino = "cappuccino"
   // some exceptions for things that might go wrong in the individual steps
   // (we'll need some of them later, use the others when experimenting
@@ -47,19 +43,8 @@ object FuturesAndPromises extends App {
   case class FrothingException(msg: String) extends Exception(msg)
   case class WaterBoilingException(msg: String) extends Exception(msg)
   case class BrewingException(msg: String) extends Exception(msg)
-  // going through these steps sequentially:
-  /*def prepareCappuccino(): Try[Cappuccino] = for {
-    ground <- Try(grind("arabica beans"))
-    water <- Try(heatWater(Water(25)))
-    espresso <- Try(brew(ground, water))
-    foam <- Try(frothMilk("milk"))
-  } yield combine(espresso, foam)*/
 
-  /*prepareCappuccino() match {
-    case Success(c) => println(s"$c is ready !")
-    case Failure(ex) => println(s"Problem prepareCappuccino: ${ex.getMessage}")
-  }*/
-
+  println("Working with Futures ...")
   // Working with Futures
   def grind(beans: CoffeeBeans): Future[GroundCoffee] = Future {
     println("start grinding...")
@@ -91,6 +76,7 @@ object FuturesAndPromises extends App {
   }
 
   def prepareCappuccino(): Future[Cappuccino] = {
+    // test with "baked beans"
     val groundCoffee = grind("arabica beans")
     val heatedWater = heatWater(Water(20))
     val frothedMilk = frothMilk("milk")
@@ -103,7 +89,7 @@ object FuturesAndPromises extends App {
   }
 
   prepareCappuccino().onComplete {
-    case Success(value) => println(value)
+    case Success(value) => println(s"$value IS READY !!!!!!!!")
     case Failure(error) => println(error)
   }
 

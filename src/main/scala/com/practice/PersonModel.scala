@@ -12,8 +12,8 @@ case class PersonModel(name: String, age: Int, job: String = "Unemploy", contact
    */
   def older(years: Int): PersonModel = PersonModel(name, age + years)
 
-  def mayBeOlder(years: Int): Option[PersonModel] = {
-    if (years >= 100) None
+  def growOld(years: Int): Option[PersonModel] = {
+    if (age >= 100) None
     else Some(PersonModel(name, age + years))
   }
 

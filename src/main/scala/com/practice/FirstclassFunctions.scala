@@ -78,4 +78,17 @@ object FirstclassFunctions extends App {
   println(empTax());
   // ----------------------------
 
+  // Others examples
+
+  def printer(data: String, getPrinter: String => Unit) = getPrinter(data)
+
+  printer("Yo !", {
+    d => println(d)
+  })
+
+  printer("Yo sans ln !", {
+    d => print(d)
+  })
+
+
 }

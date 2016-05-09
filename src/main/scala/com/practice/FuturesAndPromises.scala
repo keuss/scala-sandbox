@@ -1,6 +1,6 @@
 package com.practice
 
-import concurrent.Future
+import scala.concurrent.{Promise, Future}
 import concurrent.ExecutionContext.Implicits.global
 import scala.util.{Try, Failure, Success, Random}
 import scala.concurrent.duration._
@@ -8,12 +8,15 @@ import scala.concurrent.duration._
 object FuturesAndPromises extends App {
 
   // Futures & Promises
-  // First exemple "Hello World" -
+  // First exemple "Hello World"
+  // call apply method on the Future companion object, that requires two arguments :
+  // - The computation to be computed asynchronously is passed in as the body by-name parameter
+  // - An ExecutionContext is something that can execute our future, and you can think of it as something like a thread pool
   val f: Future[String] = Future {
     "Hello world!!"
   }
 
-  println("Exemple Promises ...")
+  println("######## Exemple Future ...")
 
   f.onComplete {
     case Success(value) => println(value)
@@ -23,8 +26,6 @@ object FuturesAndPromises extends App {
   Thread.sleep(2000)
 
   // exemple from http://danielwestheide.com/blog/2013/01/09/the-neophytes-guide-to-scala-part-8-welcome-to-the-future.html
-
-  // Sequential code -------------
 
   // Some type aliases, just for getting more meaningful method signatures:
   type CoffeeBeans = String
@@ -44,8 +45,25 @@ object FuturesAndPromises extends App {
   case class WaterBoilingException(msg: String) extends Exception(msg)
   case class BrewingException(msg: String) extends Exception(msg)
 
+  // Sequential code ----------------------------
+  // dummy implementations of the individual steps:
+  def grindSequential(beans: CoffeeBeans): GroundCoffee = s"ground coffee of $beans"
+  def heatWaterSequential(water: Water): Water = water.copy(temperature = 85)
+  def frothMilkSequential(milk: Milk): FrothedMilk = s"frothed $milk"
+  def brewSequential(coffee: GroundCoffee, heatedWater: Water): Espresso = "espresso"
+
+  def prepareCappuccinoSequential(): Try[Cappuccino] = for {
+    ground <- Try(grindSequential("arabica beans"))
+    water <- Try(heatWaterSequential(Water(25)))
+    espresso <- Try(brewSequential(ground, water))
+    foam <- Try(frothMilkSequential("milk"))
+  } yield combine(espresso, foam)
+
+  println(s"prepareCappuccinoSequential : ${prepareCappuccinoSequential()}")
+  Thread.sleep(2000)
+
+  // Working with Futures -----------------------
   println("Working with Futures ...")
-  // Working with Futures
   def grind(beans: CoffeeBeans): Future[GroundCoffee] = Future {
     println("start grinding...")
     Thread.sleep(Random.nextInt(2000))
@@ -95,4 +113,34 @@ object FuturesAndPromises extends App {
 
   Thread.sleep(10000)
 
+  println("######## Exemple Promises ...")
+  // A Promise instance is always linked to exactly one instance of Future.
+  println(s"f is ${f}")
+
+  case class TaxCut(value: Int)
+
+  def redeemCampaignPledge(): Future[TaxCut] = {
+    val p = Promise[TaxCut]()
+    Future {
+      println("Starting the new legislative period.")
+      Thread.sleep(2000)
+      p.success(TaxCut(20))
+      println("We reduced the taxes! You must reelect us !!!")
+    }
+    p.future
+  }
+
+  val taxCutF: Future[TaxCut] = redeemCampaignPledge()
+  println("Now that they're elected, let's see if they remember their promises...")
+  taxCutF.onComplete {
+    case Success(TaxCut(reduction)) =>
+      println(s"A miracle! They really cut our taxes by $reduction percentage points!")
+    case Failure(ex) =>
+      println(s"They broke their promises! Again! Because of a ${ex.getMessage}")
+  }
+
+  // If you try this out multiple times, you will see that the order of the console output is not deterministic.
+  // Eventually, the completion handler will be executed and run into the success case.
+
+  Thread.sleep(10000)
 }

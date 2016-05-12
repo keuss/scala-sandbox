@@ -170,7 +170,17 @@ object FuturesAndPromises extends App {
 
   // This is useful for performing a parallel map. For example, to apply a function to all items of a list in parallel
   Future.traverse(Seq("Yo", "Ya", "foo", "bar")) {
-    x => Future(println(computeFake(x)))
+    x => Future {
+      val cx = computeFake(x)
+      println(cx)
+      cx
+    }
+  }.map { resultList =>
+    println("resultList size is " + resultList.size)
+    resultList match {
+      case resultList if resultList.size != 4 => println("ERROR !")
+      case resultList => println("OK : " + resultList)
+    }
   }
   println("Test traverse end")
 

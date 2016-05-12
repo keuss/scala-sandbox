@@ -8,6 +8,7 @@ import scala.concurrent.duration._
 object FuturesAndPromises extends App {
 
   // Futures & Promises
+  // see source code : https://github.com/scala/scala/blob/v2.11.8/src/library/scala/concurrent/Future.scala
   // First exemple "Hello World"
   // call apply method on the Future companion object, that requires two arguments :
   // - The computation to be computed asynchronously is passed in as the body by-name parameter
@@ -143,4 +144,35 @@ object FuturesAndPromises extends App {
   // Eventually, the completion handler will be executed and run into the success case.
 
   Thread.sleep(10000)
+
+  // Others Examples
+  val f1: Future[String] = Future {
+    Thread.sleep(500)
+    "Hello world 1"
+  }
+
+  val f2: Future[String] = Future {
+    Thread.sleep(2000)
+    "Hello world 2"
+  }
+
+  // Returns a new `Future` to the result of the first future in the list that is completed
+  Future.firstCompletedOf(Seq(f1, f2)).map(firtValue => println(firtValue))
+  Thread.sleep(5000)
+  println("Test firstCompletedOf end")
+
+  def computeFake(v: String) = {
+    Thread.sleep(Random.nextInt(1000))
+    if(v == "foo")
+      Thread.sleep(3000)
+    v + "compute"
+  }
+
+  // This is useful for performing a parallel map. For example, to apply a function to all items of a list in parallel
+  Future.traverse(Seq("Yo", "Ya", "foo", "bar")) {
+    x => Future(println(computeFake(x)))
+  }
+  println("Test traverse end")
+
+  Thread.sleep(15000)
 }

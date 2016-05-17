@@ -9,6 +9,7 @@ object FuturesAndPromises extends App {
 
   // Futures & Promises
   // see source code : https://github.com/scala/scala/blob/v2.11.8/src/library/scala/concurrent/Future.scala
+  // and http://docs.scala-lang.org/overviews/core/futures.html
   // First exemple "Hello World"
   // call apply method on the Future companion object, that requires two arguments :
   // - The computation to be computed asynchronously is passed in as the body by-name parameter
@@ -146,6 +147,10 @@ object FuturesAndPromises extends App {
   Thread.sleep(10000)
 
   // Others Examples
+
+  // Creates an already completed Future with the specified result (wrapping)
+  Future.successful("Hello world!!").onComplete(r => println(r))
+
   val f1: Future[String] = Future {
     Thread.sleep(500)
     "Hello world 1"
